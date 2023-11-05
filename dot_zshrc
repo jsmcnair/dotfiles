@@ -27,5 +27,4 @@ alias rcedit="$EDITOR ~/.zshrc"
 # Starship prompt
 eval "$(starship init zsh)"
 
-# Path
 export PATH=$HOME/.local/bin:$PATH
