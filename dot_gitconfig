@@ -1,0 +1,22 @@
+[user]
+  name = jsmcnair
+#	email = john@jsmcnair.com
+	email = john.mcnair@yellowdog.co
+  signingkey = 0FD330B3B89628DE
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[alias]
+	pf = "push -f"
+	ca = "commit --amend"
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

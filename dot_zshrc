@@ -1,0 +1,31 @@
+export DATASTORE_TYPE=kubernetes
+
+# Terraform / Terragrunt
+alias tg="terragrunt"
+alias tga="terragrunt apply"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin:/home/john/go/bin
+
+# Kubernetes
+alias k="kubectl"
+alias kgp="kubectl get pods --sort-by='{.metadata.name}'"
+alias kc="kubectl config"
+alias kcu="kubectl config use-context"
+alias kcsc="kubectl config set-context --current --namespace"
+alias kcgc="kubectl config get-contexts"
+
+# Go Path
+export GOPATH=$HOME/go
+
+# Git GPG
+export GPG_TTY=$(tty)
+
+EDITOR=lvim
+alias rcedit="$EDITOR ~/.zshrc"
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# Path
+export PATH=$HOME/.local/bin:$PATH
