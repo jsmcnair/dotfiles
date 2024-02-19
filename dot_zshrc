@@ -1,4 +1,12 @@
-export DATASTORE_TYPE=kubernetes
+# Path
+export PATH=$HOME/.local/bin:$PATH
+
+# BitWarden unlock
+if [[ -z "$BW_SESSION" ]]; then
+  echo "BitWarden session not available, need to unlock"
+  export BW_SESSION=$(bw unlock --raw)
+fi
+
 
 # Terraform / Terragrunt
 alias tg="terragrunt"
@@ -8,6 +16,7 @@ alias tga="terragrunt apply"
 export PATH=$PATH:/usr/local/go/bin:/home/john/go/bin
 
 # Kubernetes
+export DATASTORE_TYPE=kubernetes
 alias k="kubectl"
 alias kgp="kubectl get pods --sort-by='{.metadata.name}'"
 alias kc="kubectl config"
@@ -21,10 +30,9 @@ export GOPATH=$HOME/go
 # Git GPG
 export GPG_TTY=$(tty)
 
-EDITOR=lvim
+export EDITOR=lvim
 alias rcedit="$EDITOR ~/.zshrc"
 
 # Starship prompt
 eval "$(starship init zsh)"
 
-export PATH=$HOME/.local/bin:$PATH
