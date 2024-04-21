@@ -1,8 +1,8 @@
 [user]
-  name = jsmcnair
+  	name = jsmcnair
 #	email = john@jsmcnair.com
 	email = john.mcnair@yellowdog.co
-#   signingkey = 0FD330B3B89628DE
+   	signingkey = 58B48A60DDA163E0
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
@@ -14,9 +14,17 @@
 [push]
 	autoSetupRemote = true
 [commit]
-# gpgsign = true
+	gpgsign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "ssh://git@github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "ssh://git@gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential

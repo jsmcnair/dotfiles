@@ -1,12 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path
 export PATH=$HOME/.local/bin:$PATH
+
+# Oh my zsh
+ZSH=/usr/share/oh-my-zsh
+# (not used) source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+plugins=()
+source $ZSH/oh-my-zsh.sh
 
 # BitWarden unlock
 if [[ -z "$BW_SESSION" ]]; then
   echo "BitWarden session not available, need to unlock"
   export BW_SESSION=$(bw unlock --raw)
 fi
-
 
 # Terraform / Terragrunt
 alias tg="terragrunt"
@@ -36,3 +48,7 @@ alias rcedit="$EDITOR ~/.zshrc"
 # Starship prompt
 eval "$(starship init zsh)"
 
+# Unmanaged config
+if [[ -e ~/.zshrc-unmanaged ]]; then
+  source ~/.zshrc-unmanaged
+fi

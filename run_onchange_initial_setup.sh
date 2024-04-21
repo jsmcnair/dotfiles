@@ -19,14 +19,11 @@ echo "KEYMAP=$KEYS" | sudo tee /etc/vconsole.conf > /dev/null
 sudo pacman -S --noconfirm --needed \
   zsh git github-cli otf-droid-nerd bitwarden-cli neovim \
   firefox firefox-i18n-en-gb man-db starship base-devel \
-  htop
+  htop tailscale
 
-# Desktop
-if [[ ! -e ~/.config/hypr/hyprland.conf ]]; then
-  git clone https://github.com/jsmcnair/hyprdots ~/Hyprdots
-  cd ~/Hyprdots/Scripts
-  ./install.sh
-fi
+
+## Enable tailscaled
+sudo systemctl enable --now tailscaled
 
 ## Lunarvim
 sudo pacman -S --noconfirm --needed make gcc python python-pip npm rustup
@@ -45,4 +42,14 @@ if [[ ! -e ~/.config/Bitwarden\ CLI/data.json ]]; then
   echo ""
   echo "Running bitwarden login..."
   echo ""
+  export BW_SESSION=$(bw login --raw)
+fi
+
+# Github Login
+
+# Desktop
+if [[ ! -e ~/.config/hypr/hyprland.conf ]]; then
+  git clone https://github.com/jsmcnair/hyprdots ~/Hyprdots
+  cd ~/Hyprdots/Scripts
+  ./install.sh
 fi
